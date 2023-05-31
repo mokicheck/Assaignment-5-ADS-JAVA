@@ -214,4 +214,29 @@ public class BST<K extends Comparable<K>, V extends Comparable<V>> {
             throw new UnsupportedOperationException();
         }
     }
+    public int getHeight()
+    {
+        return getHeight(root);
+    }
+
+    private int getHeight(Node node)
+    {
+        if (node == null || (node.left == null && node.right == null))
+        {
+            return 0;
+        }
+        else
+        {
+            int leftHeight = getHeight(node.left);
+            int rightHeight = getHeight(node.right);
+            if (leftHeight > rightHeight)
+            {
+                return leftHeight + 1;
+            }
+            else
+            {
+                return rightHeight + 1;
+            }
+        }
+    }
 }
